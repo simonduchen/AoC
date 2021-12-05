@@ -22,6 +22,7 @@ async function countLines() {
         currentValue = value;
     }
     
+    
     return c;
 }
 
