@@ -1,8 +1,6 @@
 import fs from "fs";
 import readline from "readline";
 
-
-
 async function getData() {
 
     const lines = readline.createInterface({
@@ -31,17 +29,17 @@ async function concatData(array) {
 
 async function countIncreases(array) {
     
-    let c = 0;
+    let increaseCount = 0;
     let currentMeasurement = null;
 
     await array.forEach(measurement => {
         measurement > currentMeasurement && 
-        currentMeasurement !== null ? c++ : c+=0;
+        currentMeasurement !== null ? increaseCount++ : null;
         
         currentMeasurement = measurement;
     });
     
-    return c;
+    return increaseCount;
 }
 
 
@@ -49,9 +47,7 @@ getData()
 .then( data => countIncreases(data)
 .then((result) => console.log("RESULT PART 1:", result)));
 
-getData().then(data => concatData(data)
+getData()
+.then(data => concatData(data)
 .then(concatedData => countIncreases(concatedData)
 .then(result => console.log("RESULT PART 2:", result))));
-
-
-
