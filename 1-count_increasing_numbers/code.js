@@ -1,22 +1,6 @@
 import fs from "fs";
 import readline from "readline";
-
-async function getData() {
-
-    const lines = readline.createInterface({
-        input : fs.createReadStream("./input.txt"),
-        output : process.stdout,
-        terminal: false
-    });
-    
-    let array = [];
-
-    for await (let line of lines) {
-        array.push(Number(line));
-    }
-
-    return array;
-}
+import { getData } from "../modules/utils.js"
 
 async function concatData(array) {
     
@@ -43,11 +27,11 @@ async function countIncreases(array) {
 }
 
 
-getData()
+getData("./input.txt", "number")
 .then( data => countIncreases(data)
 .then((result) => console.log("RESULT PART 1:", result)));
 
-getData()
+getData("./input.txt", "number")
 .then(data => concatData(data)
 .then(concatedData => countIncreases(concatedData)
 .then(result => console.log("RESULT PART 2:", result))));
