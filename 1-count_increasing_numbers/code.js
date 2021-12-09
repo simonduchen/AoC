@@ -4,6 +4,7 @@ import { getData } from "../modules/utils.js"
 
 async function concatData(array) {
     
+
     return await array.map((measurement, index) => {
         if(index + 2 <= array.length)
             return measurement + array[index + 1] + array[index + 2]
